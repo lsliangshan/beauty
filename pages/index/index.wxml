@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+  <block wx:if="{{!imagePath}}">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    </view>
+  </block>
+  <block wx:if="{{imagePath}}">
+    <view class="preview-container" bindtap="previewImage">
+      <image class="image-preview" mode="aspectFit" src="{{imagePath}}" bindload="imagePathLoaded"></image>
+      <canvas class="image-preview-canvas" style="width: {{imageSize.width}}rpx; height: {{imageSize.height}}rpx;" canvas-id="previewCanvas"></canvas>
+    </view>
+  </block>
+  <view class="btns-container">
+    <view class="btn-album item-btn" bindtap="getImageFromAlbum">
+      <image class="btn-icon" src="/images/album.png"></image>
+      <text class="btn-text">相册</text>
+    </view>
+    <view class="btn-camera item-btn" bindtap="getImageFromCamera">
+      <image class="btn-icon" src="/images/camera.png"></image>
+      <text class="btn-text">拍照</text>
+    </view>
+  </view>
+  <!--<view class="usermotto">-->
+    <!--<text class="user-motto">{{motto}}</text>-->
+  <!--</view>-->
+</view>

@@ -1,0 +1,74 @@
+/**index.wxss**/
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 139, 139, .6);
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 200rpx 20rpx 20rpx 20rpx;
+  border-radius: 50%;
+}
+
+.btns-container {
+  width: 750rpx;
+  height: 100rpx;
+  margin-top: 200rpx;
+  padding: 0 150rpx;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.item-btn {
+  width: 180rpx;
+  height: 72rpx;
+  background-color: #FFFFFF;
+  border-radius: 6rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-btn:active {
+  opacity: 0.7;
+}
+.btn-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+.btn-text {
+  font-size: 28rpx;
+  color: #67b8b8;
+  margin-left: 8rpx;
+}
+
+.preview-container {
+  width: 750rpx;
+  height: 700rpx;
+  margin-top: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-preview {
+  width: 700rpx;
+  height: 700rpx;
+}
+.image-preview-canvas {
+  position: absolute;
+  width: 700rpx;
+  height: 700rpx;
+  pointer-events: none;
+}
