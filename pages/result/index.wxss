@@ -1,0 +1,11 @@
+/**index.wxss**/
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #67b8b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}

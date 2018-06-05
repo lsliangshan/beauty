@@ -2,13 +2,13 @@
 <view class="container">
   <block wx:if="{{!imagePath}}">
     <view class="userinfo">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image wx:if="{{hasUserInfo}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <button wx:if="{{canIUse && !hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
     </view>
   </block>
   <block wx:if="{{imagePath}}">
     <view class="preview-container" bindtap="previewImage">
-      <image class="image-preview" mode="aspectFit" src="{{imagePath}}" bindload="imagePathLoaded"></image>
-      <canvas class="image-preview-canvas" style="width: {{imageSize.width}}rpx; height: {{imageSize.height}}rpx;" canvas-id="previewCanvas"></canvas>
+      <image class="image-preview" id="imagePreview" mode="aspectFit" src="{{imagePath}}" bindload="imagePathLoaded"></image>
     </view>
   </block>
   <view class="btns-container">
@@ -21,7 +21,4 @@
       <text class="btn-text">拍照</text>
     </view>
   </view>
-  <!--<view class="usermotto">-->
-    <!--<text class="user-motto">{{motto}}</text>-->
-  <!--</view>-->
 </view>

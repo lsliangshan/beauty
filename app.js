@@ -34,6 +34,14 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    requestInfo: {
+      baseUrl: 'http://192.168.0.104:3000',
+      detectFace: '/Bd/index/detectFace',
+      getToken: '/Bd/index/token',
+      getBase64: '/Bd/index/upload'
+    },
+    imageData: '',
+    detectData: {}
   }
 })

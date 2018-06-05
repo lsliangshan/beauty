@@ -4,21 +4,11 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imagePath: 'http://tmp/wx3a2e54b52093ad4e.o6zAJs-TlVVCAT21omSrdiJviC2w.j7cTEA8i0oble662a46fc01d4ce457e95906308dbacf.png',
-    imageSize: {
-      width: 300,
-      height: 300
-    }
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    imagePath: '',
+    requestInfo: app.globalData.requestInfo
   },
   getImageFromAlbum () {
     wx.chooseImage({
@@ -26,12 +16,14 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album'],
       success: res => {
-        console.log('====>', res.tempFiles[0])
-        this.setData({
-          imagePath: res.tempFilePaths[0]
-        })
-
-        this.imageToBase64();
+        this.doDetect(res.tempFilePaths[0])
+        // wx.showLoading({
+        //   title: '识别中...',
+        // })
+        // this.setData({
+        //   imagePath: res.tempFilePaths[0]
+        // })
+        // this.imageToBase64(res.tempFilePaths[0]);
       }
     })
   },
@@ -41,41 +33,59 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
       success: res => {
-        console.log('====>', res)
-        this.setData({
-          imagePath: res.tempFilePaths[0]
-        })
+        this.doDetect(res.tempFilePaths[0])
       }
     })
+  },
+  doDetect (path) {
+    wx.showLoading({
+      title: '识别中...',
+    })
+    this.setData({
+      imagePath: path
+    })
+    this.imageToBase64(path);
   },
   previewImage () {
     wx.previewImage({
       urls: [this.data.imagePath]
     })
   },
-  imagePathLoaded (evt) {
-    console.log('.... image path loaded: ', evt)
-    this.setData({
-      imageSize: {
-        width: evt.detail.width,
-        height: evt.detail.height
+  imageToBase64 (image) {
+    const that = this
+    wx.uploadFile({
+      url: this.data.requestInfo.baseUrl + this.data.requestInfo.getBase64,
+      filePath: image,
+      name: 'file',
+      success: ({data}) => {
+        that.detectFace({
+          at: '24.40957c802dfeb4217c35f19fe6b273ec.2592000.1530706870.282335-11348934',
+          image: JSON.parse(data).data
+        })
       }
-    })
+    });
   },
-  imageToBase64 () {
-    let canvas = wx.createCanvasContext('previewCanvas');
-    canvas.drawImage(this.data.imagePath, 0, 0, this.data.imageSize.width / 2, this.data.imageSize.height / 2);
-    canvas.draw(false, () => {
-      wx.canvasGetImageData({
-        canvasId: 'previewCanvas',
-        x: 0,
-        y: 0,
-        width: this.data.imageSize.width / 2,
-        height: this.data.imageSize.height / 2,
-        success: (res) => {
-          console.log('.....to base 64: ', wx.arrayBufferToBase64(res.data))
+  detectFace (args) {
+    wx.request({
+      url: this.data.requestInfo.baseUrl + this.data.requestInfo.detectFace,
+      method: 'POST',
+      data: {
+        at: args.at,
+        image: args.image
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: ({data}) => {
+        app.globalData.imageData = args.image
+        app.globalData.detectData = data.data
+        wx.hideLoading()
+        if (data.data.result && data.data.result.face_list && data.data.result.face_list.length > 0) {
+          wx.navigateTo({
+            url: '../result/index'
+          })
         }
-      })
+      }
     })
   },
   onLoad: function () {
@@ -107,7 +117,6 @@ Page({
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

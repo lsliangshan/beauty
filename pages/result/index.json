@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "识别结果",
+  "navigationBarBackgroundColor": "#67b8b8",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
+}
