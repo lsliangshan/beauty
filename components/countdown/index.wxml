@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<!--<template name="header">-->
+  <view class="countdown-container">
+    <text id="test">{{countdown}}</text>
+  </view>
+<!--</template>-->

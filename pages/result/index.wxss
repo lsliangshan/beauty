@@ -9,3 +9,26 @@
   justify-content: center;
   color: #FFFFFF;
 }
+
+.avatar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 150rpx;
+  margin-top: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.score-text {
+  font-size: 48rpx;
+  font-weight: 200;
+}

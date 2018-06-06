@@ -8,7 +8,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imagePath: '',
-    requestInfo: app.globalData.requestInfo
+    requestInfo: app.globalData.requestInfo,
+    showMask: false
   },
   getImageFromAlbum () {
     wx.chooseImage({
@@ -42,6 +43,7 @@ Page({
       title: '识别中...',
     })
     this.setData({
+      showMask: true,
       imagePath: path
     })
     this.imageToBase64(path);
@@ -77,6 +79,9 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: ({data}) => {
+        this.setData({
+          showMask: false
+        })
         app.globalData.imageData = args.image
         app.globalData.detectData = data.data
         wx.hideLoading()

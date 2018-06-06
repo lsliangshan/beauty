@@ -1,4 +1,8 @@
-<!--index.wxml-->
+<!--index.wxml data:image/jpeg;base64, -->
 <view class="container">
-    <text>{{detectData.result.face_list[0].beauty}}</text>
+    <view class="avatar-container">
+        <image class="avatar-image" src="data:image/jpeg;base64,{{imageData}}" background-size="cover"></image>
+    </view>
+
+    <countdown countdown="{{detectResult.beauty}}"></countdown>
 </view>

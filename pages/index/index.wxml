@@ -7,8 +7,8 @@
     </view>
   </block>
   <block wx:if="{{imagePath}}">
-    <view class="preview-container" bindtap="previewImage">
-      <image class="image-preview" id="imagePreview" mode="aspectFit" src="{{imagePath}}" bindload="imagePathLoaded"></image>
+    <view class="preview-container">
+      <image class="image-preview" id="imagePreview" mode="aspectFit" src="{{imagePath}}" catchtap="previewImage" bindload="imagePathLoaded"></image>
     </view>
   </block>
   <view class="btns-container">
@@ -21,4 +21,5 @@
       <text class="btn-text">拍照</text>
     </view>
   </view>
+  <view class="page-mask" wx:if="{{showMask}}"></view>
 </view>
