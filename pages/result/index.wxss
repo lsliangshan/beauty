@@ -1,29 +1,41 @@
 /**index.wxss**/
+@keyframes heartbeat {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
 .container {
-  position: fixed;
+  /*position: fixed;*/
   top: 0;
   left: 0;
   background-color: #67b8b8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
   color: #FFFFFF;
+  overflow: hidden;
 }
 
 .avatar-container {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 100rpx;
   width: 750rpx;
-  height: 150rpx;
-  margin-top: 100rpx;
+  height: 300rpx;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .avatar-image {
-  width: 150rpx;
-  height: 150rpx;
+  width: 300rpx;
+  height: 300rpx;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -31,4 +43,36 @@
 .score-text {
   font-size: 48rpx;
   font-weight: 200;
+}
+
+.countdown-wrapper {
+  position: absolute;
+  left: 0;
+  top: 450rpx;
+  width: 750rpx;
+}
+
+.beauty-name-container {
+  position: absolute;
+  left: 0;
+  top: 550rpx;
+  width: 750rpx;
+  height: 50rpx;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  transition-delay: 1s;
+}
+.beauty-name-container.show {
+  opacity: 1;
+  -webkit-animation: heartbeat .8s 1;
+  animation: heartbeat .8s 1;
+  animation-delay: 1s;
 }

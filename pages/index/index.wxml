@@ -1,14 +1,16 @@
 <!--index.wxml-->
 <view class="container">
   <block wx:if="{{!imagePath}}">
-    <view class="userinfo">
-      <image wx:if="{{hasUserInfo}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class="userinfo-container">
+      <view class="userinfo">
+        <image wx:if="{{hasUserInfo}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
         <button wx:if="{{canIUse && !hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+      </view>
     </view>
   </block>
   <block wx:if="{{imagePath}}">
     <view class="preview-container">
-      <image class="image-preview" id="imagePreview" mode="aspectFit" src="{{imagePath}}" catchtap="previewImage" bindload="imagePathLoaded"></image>
+      <image class="image-preview" id="imagePreview" mode="aspectFit" src="{{imagePath}}" catchtap="previewImage"></image>
     </view>
   </block>
   <view class="btns-container">

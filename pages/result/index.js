@@ -7,7 +7,9 @@ Page({
     // detectData: app.globalData.detectData,
     imageData: '',
     detectResult: {},
-    requestInfo: app.globalData.requestInfo
+    requestInfo: app.globalData.requestInfo,
+    resultInfo: {},
+    pageLoaded: false
   },
   onLoad: function () {
     let _detectResult = app.globalData.detectData.result.face_list[0]
@@ -16,10 +18,14 @@ Page({
       imageData: app.globalData.imageData,
       detectResult: _detectResult
     })
-
     this.getResult({
       gender: _detectResult.gender.type === 'male' ? '1' : '2',
       score: _detectResult.beauty
+    })
+  },
+  onReady: function () {
+    this.setData({
+      pageLoaded: true
     })
   },
   getResult (args) {
@@ -34,7 +40,12 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: ({data}) => {
-        console.log('.....', data)
+        console.log('>>>> result: ', data)
+        if (data.status === 200) {
+          this.setData({
+            resultInfo: data.data
+          })
+        }
       }
     })
   }

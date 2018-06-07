@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <!--<template name="header">-->
   <view class="countdown-container">
-    <text id="test">{{countdown}}</text>
+    <!--<text id="test">{{countdown}}</text>-->
+    <canvas class="countdown-canvas" disable-scroll="true" canvas-id="countdownCanvas"></canvas>
   </view>
 <!--</template>-->

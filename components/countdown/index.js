@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var countDown = require('../../behaviors/countdown.js')
+var utils = require('../../utils/util');
 Component({
   options: {
     multipleSlots: true
@@ -13,17 +13,16 @@ Component({
     }
   },
   data: {},
-  behaviors: [countDown],
+  behaviors: [],
   ready: function () {
-    this.setData({
-      countdown: this.data.countdown - 10
-    })
-    var numAnim = this.countDown(24.02, 99.99);
-    if (!numAnim.error) {
-      numAnim.start();
-    } else {
-      console.error(numAnim.error);
-    }
+    let ctx = wx.createCanvasContext('countdownCanvas', this);
+    utils.countUp.start(ctx, 0, this.data.countdown.toFixed(2), 2, 2.5, {
+      canvas: {
+        fontSize: 30,
+        color: '#4d63bc'
+      }
+    });
+
     // this.myBehaviorMethod();
     // wx.request({
     //   url: 'http://192.168.189.89:3000/Bd/index/token',
@@ -35,6 +34,9 @@ Component({
     //     })
     //   }
     // })
+  },
+  detached: function () {
+    utils.countUp.reset()
   },
   externalClasses: ['custom-style']
 })

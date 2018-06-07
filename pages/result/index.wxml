@@ -4,5 +4,9 @@
         <image class="avatar-image" src="data:image/jpeg;base64,{{imageData}}" background-size="cover"></image>
     </view>
 
-    <countdown countdown="{{detectResult.beauty}}"></countdown>
+    <countdown class="countdown-wrapper" countdown="{{detectResult.beauty}}"></countdown>
+
+    <view class="beauty-name-container {{pageLoaded ? 'show' : ''}}">
+        <text>{{resultInfo.name}}</text>
+    </view>
 </view>

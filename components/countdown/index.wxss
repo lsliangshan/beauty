@@ -1,8 +1,14 @@
 /**index.wxss**/
 .countdown-container {
     width: 750rpx;
-    height: 128rpx;
+    /*height: 128rpx;*/
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.countdown-canvas {
+    width: 80px;
+    height: 30px;
+    overflow-y: hidden;
 }

@@ -122,6 +122,10 @@ Page({
     }
   },
   getUserInfo: function(e) {
+    if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
+      // 用户取消授权
+      return
+    }
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
