@@ -76,3 +76,159 @@
   animation: heartbeat .8s 1;
   animation-delay: 1s;
 }
+
+.poetry-container {
+  position: absolute;
+  left: 0;
+  bottom: 80rpx;
+  font-size: 32rpx;
+  margin: 100px 0 0;
+  width: 750rpx;
+  height: 500rpx;
+  background-color: red;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.text-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+}
+
+@keyframes twister {
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(0deg) translate(0);
+    opacity: 1;
+  }
+}
+
+.text-container text {
+  display: inline-block;
+  color: #ddb40f;
+  opacity: 0;
+}
+.text-container text.start {
+  transform: rotate(-180deg) translate(50px, 0);
+  animation: twister .8s forwards;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(1) {
+  animation-delay: .1s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(2) {
+  animation-delay: .3s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(3) {
+  animation-delay: .5s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(4) {
+  animation-delay: .7s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(5) {
+  animation-delay: .9s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(6) {
+  animation-delay: 1.1s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(7) {
+  animation-delay: 1.3s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(8) {
+  animation-delay: 1.5s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(9) {
+  animation-delay: 1.7s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(10) {
+  animation-delay: 1.9s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(11) {
+  animation-delay: 2.1s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(12) {
+  animation-delay: 2.3s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(13) {
+  animation-delay: 3.5s;
+}
+
+.text-container.delay-0 .item-word:nth-of-type(14) {
+  animation-delay: 2.6s;
+}
+
+/*delay-1*/
+.text-container.delay-1 .item-word:nth-of-type(1) {
+  animation-delay: 2.1s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(2) {
+  animation-delay: 2.3s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(3) {
+  animation-delay: 2.5s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(4) {
+  animation-delay: 2.7s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(5) {
+  animation-delay: 2.9s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(6) {
+  animation-delay: 3.1s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(7) {
+  animation-delay: 3.3s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(8) {
+  animation-delay: 3.5s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(9) {
+  animation-delay: 3.7s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(10) {
+  animation-delay: 3.9s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(11) {
+  animation-delay: 4.1s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(12) {
+  animation-delay: 4.3s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(13) {
+  animation-delay: 4.5s;
+}
+
+.text-container.delay-1 .item-word:nth-of-type(14) {
+  animation-delay: 4.7s;
+}
+

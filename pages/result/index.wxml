@@ -1,4 +1,4 @@
-<!--index.wxml data:image/jpeg;base64, -->
+<!--index.wxml http://www.17sucai.com/preview/11/2017-02-26/css3/demo.html -->
 <view class="container">
     <view class="avatar-container">
         <image class="avatar-image" src="data:image/jpeg;base64,{{imageData}}" background-size="cover"></image>
@@ -8,5 +8,15 @@
 
     <view class="beauty-name-container {{pageLoaded ? 'show' : ''}}">
         <text>{{resultInfo.name}}</text>
+    </view>
+
+    <view class="poetry-container">
+        <block wx:for="{{poetry.content}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
+            <view class="text-container">
+                <block wx:for="{{item}}" wx:key="*this" wx:for-index="idx" wx:for-item="word">
+                    <text class="item-word {{pageLoaded ? 'start' : ''}}" style="animationDelay: {{(poetry.content.length - index) * 2000 + idx * 500}}ms">{{word}}</text>
+                </block>
+            </view>
+        </block>
     </view>
 </view>

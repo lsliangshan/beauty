@@ -9,7 +9,12 @@ Page({
     detectResult: {},
     requestInfo: app.globalData.requestInfo,
     resultInfo: {},
-    pageLoaded: false
+    pageLoaded: false,
+    poetry: {
+      title: '',
+      author: '',
+      content: []
+    }
   },
   onLoad: function () {
     let _detectResult = app.globalData.detectData.result.face_list[0]
@@ -40,13 +45,27 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: ({data}) => {
-        console.log('>>>> result: ', data)
         if (data.status === 200) {
           this.setData({
             resultInfo: data.data
           })
+          this.formatPoetryContent(data.data.poetry)
         }
       }
+    })
+  },
+  formatPoetryContent (poetry) {
+    let outPoetry = {
+      title: poetry.title,
+      author: poetry.author,
+      content: []
+    }
+    for (let i = poetry.content.length - 1; i >= 0; i--) {
+      outPoetry.content.push(poetry.content[i].trim().split(''))
+    }
+    console.log('......', outPoetry.content.length)
+    this.setData({
+      poetry: outPoetry
     })
   }
 })
