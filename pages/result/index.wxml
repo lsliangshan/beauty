@@ -11,12 +11,19 @@
     </view>
 
     <view class="poetry-container">
-        <block wx:for="{{poetry.content}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
-            <view class="text-container">
-                <block wx:for="{{item}}" wx:key="*this" wx:for-index="idx" wx:for-item="word">
-                    <text class="item-word {{pageLoaded ? 'start' : ''}}" style="animationDelay: {{(poetry.content.length - index) * 2000 + idx * 500}}ms">{{word}}</text>
+        <view class="poetry-inner">
+            <block wx:for="{{poetry.content}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
+                <view class="text-container delay-{{poetry.content.length - index - 1}}">
+                    <block wx:for="{{item}}" wx:key="*this" wx:for-index="idx" wx:for-item="word">
+                        <text class="item-word">{{word}}</text>
+                    </block>
+                </view>
+            </block>
+            <view class="poetry-title-container {{pageLoaded ? 'show' : ''}}">
+                <block wx:for="{{poetry.title}}" wx:key="*this" wx:for-index="index" wx:for-item="title">
+                    <text class="item-word">{{title}}</text>
                 </block>
             </view>
-        </block>
+        </view>
     </view>
 </view>

@@ -56,8 +56,8 @@ Page({
   },
   formatPoetryContent (poetry) {
     let outPoetry = {
-      title: poetry.title,
-      author: poetry.author,
+      title: poetry.title.trim().split(''),
+      author: poetry.author.trim().split(''),
       content: []
     }
     for (let i = poetry.content.length - 1; i >= 0; i--) {
