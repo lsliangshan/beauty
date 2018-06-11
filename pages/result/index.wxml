@@ -13,8 +13,8 @@
     <view class="poetry-container">
         <view class="poetry-inner">
             <block wx:for="{{poetry.content}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
-                <view class="text-container delay-{{poetry.content.length - index - 1}}">
-                    <block wx:for="{{item}}" wx:key="*this" wx:for-index="idx" wx:for-item="word">
+                <view class="text-container delay-{{poetry.content.length - index - 1}} {{pageLoaded ? 'show' : ''}}">
+                    <block wx:for="{{item}}" wx:key="idx" wx:for-index="idx" wx:for-item="word">
                         <text class="item-word">{{word}}</text>
                     </block>
                 </view>
@@ -23,7 +23,16 @@
                 <block wx:for="{{poetry.title}}" wx:key="*this" wx:for-index="index" wx:for-item="title">
                     <text class="item-word">{{title}}</text>
                 </block>
+                <text class="item-word" wx:if="{{poetry.author}}">·</text>
+                <block wx:for="{{poetry.author}}" wx:key="*this" wx:for-index="index" wx:for-item="title">
+                    <text class="item-word">{{title}}</text>
+                </block>
             </view>
+            <!--<view class="poetry-title-container {{pageLoaded ? 'show' : ''}}">-->
+                <!--<block wx:for="{{poetry.author}}" wx:key="*this" wx:for-index="index" wx:for-item="title">-->
+                    <!--<text class="item-word">{{title}}</text>-->
+                <!--</block>-->
+            <!--</view>-->
         </view>
     </view>
 </view>
