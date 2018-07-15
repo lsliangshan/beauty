@@ -27,11 +27,15 @@ Page({
       gender: _detectResult.gender.type === 'male' ? '1' : '2',
       score: _detectResult.beauty
     })
+    console.log('onload')
   },
   onReady: function () {
-    this.setData({
-      pageLoaded: true
-    })
+    setTimeout(() => {
+      this.setData({
+        pageLoaded: true
+      })
+    }, 300)
+    console.log('onready')
   },
   getResult (args) {
     wx.request({
@@ -63,7 +67,6 @@ Page({
     for (let i = poetry.content.length - 1; i >= 0; i--) {
       outPoetry.content.push(poetry.content[i].trim().split(''))
     }
-    console.log('......', outPoetry.content.length)
     this.setData({
       poetry: outPoetry
     })
