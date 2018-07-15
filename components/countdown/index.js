@@ -16,10 +16,10 @@ Component({
   behaviors: [],
   ready: function () {
     let ctx = wx.createCanvasContext('countdownCanvas', this);
-    utils.countUp.start(ctx, 0, this.data.countdown.toFixed(2), 2, 2.5, {
+    utils.countUp.start(ctx, 0, this.data.countdown.toFixed(2), 2, 1.5, {
       canvas: {
         fontSize: 30,
-        color: '#4d63bc'
+        color: '#ffffff'
       }
     });
 
